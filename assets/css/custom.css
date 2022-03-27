@@ -1,0 +1,90 @@
+/* Header */
+.btn {
+  background-color: #0a66c2 !important;
+}
+
+.btn::before {
+  background-color: transparent !important;
+}
+
+.slicknav_menu .slicknav_icon-bar {
+  background-color: #0a66c2 !important;
+}
+
+.header-area .main-menu ul li a {
+  color: #333;
+}
+
+.header-area .main-menu ul li:hover>a {
+  color: #0a66c2 !important;
+}
+
+.slicknav_menu .slicknav_nav a:hover {
+  color: #0a66c2 !important;
+}
+
+/* Scroll up */
+#scrollUp {
+  background-color: #0a66c2 !important;
+}
+
+/* Footer */
+.footer-area .footer-form form .form-icon button {
+  background-color: #0a66c2 !important;
+}
+
+.footer-area .footer-tittle ul li a:hover {
+  color: #0a66c2 !important;
+}
+
+/******** Home page ********/
+.our-services .single-services:hover .services-ion span {
+  color: #0a66c2 !important;
+}
+
+.our-services .single-services:hover .services-cap h5 a {
+  color: #0a66c2 !important;
+}
+
+.our-services .single-services .services-cap span {
+  color: #0a66c2 !important;
+}
+
+/******** Internships page ********/
+.job-category-listing .single-listing .select-Categories .container input:checked ~ .checkmark {
+  background-color: #0a66c2 !important;
+}
+
+.irs-line {
+  background: linear-gradient(to bottom, #DDD -50%, #FFF 150%);
+}
+
+.irs-slider {
+  border: 1px solid #0a66c2 !important;
+  background-color: #0a66c2 !important;
+  background: linear-gradient(to bottom, #0a66c2 0%, #0a66c2 20%, #0a66c2 100%) !important;
+}
+
+.irs-bar {
+  border-top: 1px solid #0a66c2 !important;
+  border-bottom: 1px solid #0a66c2 !important;
+  background: #0a66c2 !important;
+  background: linear-gradient(to top, #0a66c2 0%, #0a66c2 100%) !important;
+}
+
+.pb-120 {
+  padding-bottom: 20px;
+}
+
+.pagination-area .page-link:hover {
+  color: #0a66c2 !important;
+}
+
+/******** Internship details page ********/
+.job-post-company .single-job-items:hover {
+  box-shadow: none;
+}
+
+.apply-btn a.btn {
+  color: #fff !important;
+}
