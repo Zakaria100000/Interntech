@@ -178,14 +178,7 @@ INSERT INTO `location`(`id`, `city`) VALUES
 ('Software Developer','50 days','28000 dz','12 places','C++ Java SQL','22/02/2022','4','23','4','1'),
 ('Mobile Developer','55 days','18000 dz','6 places','Java C#','01/03/2022','3','1','2','3');
 
-
-
-
-
-
-
-
-
+--applciation
 
 --internship in wishlist
 
