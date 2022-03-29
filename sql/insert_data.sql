@@ -96,7 +96,7 @@ INSERT INTO `location`(`id`, `city`) VALUES
 (9,'Transport'),
 (10,'Video game');
  
--- Application Status 
+-- Application Status Table
 -- Posted, In-review, Refused, Accepted
 (1,'response to an offer has been made by a Student'),
 (2,'Updates'),
@@ -105,3 +105,12 @@ INSERT INTO `location`(`id`, `city`) VALUES
 (5,'the internship agreements have been issued to the company'),
 (6,'internship agreements have been returned signed');
 
+-- Companies Table
+
+(1,'Yassir',9),
+(2,'Hive Digit',2),
+(3,'Heetch',9),
+(4,'El Kendi',8),
+(5,'Air Algerie',9),
+(5,'Jumia',1),
+(6,'Ooredoo',7);
