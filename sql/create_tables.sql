@@ -6,7 +6,7 @@
 #------------------------------------------------------------
 # Table: role
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS role;
 CREATE TABLE role(
         id   Int  Auto_increment  NOT NULL ,
         name Varchar (50) NOT NULL
@@ -17,7 +17,7 @@ CREATE TABLE role(
 #------------------------------------------------------------
 # Table: promo
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS promo;
 CREATE TABLE promo(
         id   Int  Auto_increment  NOT NULL ,
         name Varchar (50) NOT NULL
@@ -28,7 +28,7 @@ CREATE TABLE promo(
 #------------------------------------------------------------
 # Table: center
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS center;
 CREATE TABLE center(
         id   Int  Auto_increment  NOT NULL ,
         name Varchar (50) NOT NULL
@@ -39,7 +39,7 @@ CREATE TABLE center(
 #------------------------------------------------------------
 # Table: user 
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS user;
 CREATE TABLE user(
         id        Int  Auto_increment  NOT NULL ,
         firstname Varchar (50) NOT NULL ,
@@ -60,7 +60,7 @@ CREATE TABLE user(
 #------------------------------------------------------------
 # Table: location
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS location;
 CREATE TABLE location(
         id   TinyINT NOT NULL ,
         city Varchar (50) NOT NULL
@@ -71,7 +71,7 @@ CREATE TABLE location(
 #------------------------------------------------------------
 # Table: internship_type
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS internship_type;
 CREATE TABLE internship_type(
         id   Int  Auto_increment  NOT NULL ,
         name Varchar (50) NOT NULL
@@ -82,7 +82,7 @@ CREATE TABLE internship_type(
 #------------------------------------------------------------
 # Table: internship_category
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS internship_category;
 CREATE TABLE internship_category(
         id   Int  Auto_increment  NOT NULL ,
         name Varchar (50) NOT NULL
@@ -93,7 +93,7 @@ CREATE TABLE internship_category(
 #------------------------------------------------------------
 # Table: wishlist
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS wishlist;
 CREATE TABLE wishlist(
         id       Int  Auto_increment  NOT NULL ,
         id_user  Int NOT NULL
@@ -107,7 +107,7 @@ CREATE TABLE wishlist(
 #------------------------------------------------------------
 # Table: company_field
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS company_field;
 CREATE TABLE company_field(
         id   Int  Auto_increment  NOT NULL ,
         name Varchar (50) NOT NULL
@@ -118,7 +118,7 @@ CREATE TABLE company_field(
 #------------------------------------------------------------
 # Table: company
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS company;
 CREATE TABLE company(
         id               Int  Auto_increment  NOT NULL ,
         name             Varchar (50) ,
@@ -132,7 +132,7 @@ CREATE TABLE company(
 #------------------------------------------------------------
 # Table: Internship
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS internship;
 CREATE TABLE Internship(
         id                     Int  Auto_increment  NOT NULL ,
         name                   Varchar (50) NOT NULL ,
@@ -157,7 +157,7 @@ CREATE TABLE Internship(
 #------------------------------------------------------------
 # Table: status
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS status;
 CREATE TABLE status(
         id   Int  Auto_increment  NOT NULL ,
         name Varchar (50) NOT NULL
@@ -168,7 +168,7 @@ CREATE TABLE status(
 #------------------------------------------------------------
 # Table: application
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS application;
 CREATE TABLE application(
         id            Int  Auto_increment  NOT NULL ,
         cv            Varchar (50) NOT NULL ,
@@ -187,7 +187,7 @@ CREATE TABLE application(
 #------------------------------------------------------------
 # Table: internship_in_wishlist
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS internship_in_wishlit;
 CREATE TABLE internship_in_wishlist(
         id          Int NOT NULL ,
         id_wishlist Int NOT NULL

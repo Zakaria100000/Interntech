@@ -1,3 +1,6 @@
+<?php
+?>
+
 <header>
     <!-- Header Start -->
     <div class="header-area header-transparrent">
@@ -20,13 +23,25 @@
                                         <li><a href="internships.php">Internships</a></li>
                                         <li><a href="about.php">About</a></li>
                                         <li><a href="contact.php">Contact</a></li>
+                                        <?php if(isset($_SESSION["loggedin"])): ?>
+                                            <?php echo "<li><a href='#'>{$_SESSION['email']}</a>
+                                                            <ul class='submenu'>
+                                                                <li><a href='admin.php'>Dashboard</a></li>
+                                                                <li><a href='logout.php'>Logout</a></li>
+                                                            </ul>
+                                                        </li>"
+                                            ?>
+                                        <?php endif; ?>
                                     </ul>
                                 </nav>
                             </div>
+                            <?php if(!isset($_SESSION["loggedin"])): ?>
+                                <?php echo "<div class='header-btn d-none f-right d-lg-block'>
+                                                <a href='login.php' class='btn head-btn1'>Login</a>
+                                            </div>"; 
+                                            ?>
+                            <?php endif; ?> 
                             <!-- Header-btn -->
-                            <div class="header-btn d-none f-right d-lg-block">
-                                <a href="#" class="btn head-btn1">Login</a>
-                            </div>
                         </div>
                     </div>
                     <!-- Mobile Menu -->

@@ -32,7 +32,6 @@ INSERT INTO `internship_category`(`id`, `name`) VALUES
 (4,'Software Development');
 
 -- City Table 
-
 INSERT INTO `location`(`id`, `city`) VALUES 
 (1,'Adrar'),
 (2,'Chlef'),
@@ -84,7 +83,7 @@ INSERT INTO `location`(`id`, `city`) VALUES
 (48,'Relizane');		
 
 -- Sectors Table 
-
+INSERT INTO `company_field`(`id`, `name`) VALUES 
 (1,'Retail business'),
 (2,'Consulting engineering'),
 (3,'Geomatics'),
@@ -95,9 +94,9 @@ INSERT INTO `location`(`id`, `city`) VALUES
 (8,'Health'),
 (9,'Transport'),
 (10,'Video game');
- 
--- Application Status Table
--- Posted, In-review, Refused, Accepted
+
+-- Status 
+INSERT INTO `status`(`id`, `name`) VALUES
 (1,'response to an offer has been made by a Student'),
 (2,'Updates'),
 (3,'internship validation form issued by the company'),
@@ -106,7 +105,7 @@ INSERT INTO `location`(`id`, `city`) VALUES
 (6,'internship agreements have been returned signed');
 
 -- Companies Table
-
+INSERT INTO `company`(`id`,`name`,`id_company_field`) VALUES
 (1,'Yassir',9),
 (2,'Hive Digit',2),
 (3,'Heetch',9),
@@ -114,17 +113,10 @@ INSERT INTO `location`(`id`, `city`) VALUES
 (5,'Air Algerie',9),
 (6,'Jumia',1),
 (7,'Ooredoo',7);
-
--- Role Table 
-
-(1,'Admin'),
-(2,'Pilot'),
-(3,'Delegate'),
-(4,'Student');  
-
+ 
 -- User Table 
-
-('TAREK','Abdeldjalil','tarek.abdeljalil.dz@viacesi.fr','abdeljalil',1,2,5); 
+INSERT INTO `user`(`firstname`,`lastname`,`email`,`password`,`id_role`,`id_center`,`id_promo`) VALUES
+('TAREK','Abdeldjalil','tarek.abdeljalil.dz@viacesi.fr','abdeljalil',1,2,5),
 ('KAHLI','Mohamed Samy','kahli.mohamedsamy.dz@viacesi.fr','mohamedsamy',1,1,5), 
 ('HAMIDAT','Ryma','rhamidat@cesi-algerie.com','ryma',2,1,1), 
 ('AFRIT','Hani','hafrit@cesi-algerie.com','hani',2,1,2), 

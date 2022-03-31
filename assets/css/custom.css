@@ -88,3 +88,27 @@
 .apply-btn a.btn {
   color: #fff !important;
 }
+
+/* */
+.login-title {
+  font-size: 27px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.form-login .form-group {
+  margin-bottom: 30px;
+}
+
+.form-login .form-control {
+  border: 1px solid #e5e6e9;
+  border-radius: 0px;
+  height: 48px;
+  padding-left: 18px;
+  font-size: 13px;
+  background: transparent;
+}
+
+.form-login label {
+  font-size: 14px;
+}
