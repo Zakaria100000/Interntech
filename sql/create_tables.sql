@@ -200,11 +200,11 @@ CREATE TABLE permission(
 #------------------------------------------------------------
 DROP TABLE IF EXISTS takes_place;
 CREATE TABLE takes_place(
-        id            TinyINT NOT NULL ,
-        id_Internship Int NOT NULL
-	,CONSTRAINT takes_place_PK PRIMARY KEY (id,id_Internship)
+        id_Internship Int NOT NULL,
+        id_location TinyINT NOT NULL
+	,CONSTRAINT takes_place_PK PRIMARY KEY (id_Internship,id_location)
 
-	,CONSTRAINT takes_place_location_FK FOREIGN KEY (id) REFERENCES location(id)
+	,CONSTRAINT takes_place_location_FK FOREIGN KEY (id_location) REFERENCES location(id)
 	,CONSTRAINT takes_place_Internship_FK FOREIGN KEY (id_Internship) REFERENCES Internship(id)
 )ENGINE=InnoDB;
 
@@ -214,12 +214,12 @@ CREATE TABLE takes_place(
 #------------------------------------------------------------
 DROP TABLE IF EXISTS wishlist_internship;
 CREATE TABLE wishlist_internship(
-        id          Int NOT NULL ,
-        id_wishlist Int NOT NULL
-	,CONSTRAINT wishlist_internship_PK PRIMARY KEY (id,id_wishlist)
+        id_wishlist Int NOT NULL,
+        id_internship Int NOT NULL
+	,CONSTRAINT wishlist_internship_PK PRIMARY KEY (id_wishlist,id_internship)
 
-	,CONSTRAINT wishlist_internship_Internship_FK FOREIGN KEY (id) REFERENCES Internship(id)
 	,CONSTRAINT wishlist_internship_wishlist_FK FOREIGN KEY (id_wishlist) REFERENCES wishlist(id)
+        ,CONSTRAINT wishlist_internship_Internship_FK FOREIGN KEY (id_internship) REFERENCES Internship(id)
 )ENGINE=InnoDB;
 
 
@@ -228,13 +228,13 @@ CREATE TABLE wishlist_internship(
 #------------------------------------------------------------
 DROP TABLE IF EXISTS role_permission;
 CREATE TABLE role_permission(
-        id_permission   Int NOT NULL ,
         id_role Int NOT NULL,
+        id_permission   Int NOT NULL,
         is_allowed Bool NOT NULL
-	,CONSTRAINT role_permission_PK PRIMARY KEY (id_permission,id_role)
+	,CONSTRAINT role_permission_PK PRIMARY KEY (id_role,id_permission)
 
+        ,CONSTRAINT role_permission_role_FK FOREIGN KEY (id_role) REFERENCES role(id)
 	,CONSTRAINT role_permission_permission_FK FOREIGN KEY (id_permission) REFERENCES permission(id)
-	,CONSTRAINT role_permission_role_FK FOREIGN KEY (id_role) REFERENCES role(id)
 )ENGINE=InnoDB;
 
 
@@ -243,10 +243,10 @@ CREATE TABLE role_permission(
 #------------------------------------------------------------
 DROP TABLE IF EXISTS company_is_located;
 CREATE TABLE company_is_located(
-        id         TinyINT NOT NULL ,
-        id_company Int NOT NULL
-	,CONSTRAINT company_is_located_PK PRIMARY KEY (id,id_company)
+        id_company Int NOT NULL,
+        id_location TinyINT NOT NULL
+	,CONSTRAINT company_is_located_PK PRIMARY KEY (id_company,id_location)
 
-	,CONSTRAINT company_is_located_location_FK FOREIGN KEY (id) REFERENCES location(id)
-	,CONSTRAINT company_is_located_company_FK FOREIGN KEY (id_company) REFERENCES company(id)
+        ,CONSTRAINT company_is_located_company_FK FOREIGN KEY (id_company) REFERENCES company(id)
+	,CONSTRAINT company_is_located_location_FK FOREIGN KEY (id_location) REFERENCES location(id)
 )ENGINE=InnoDB;
