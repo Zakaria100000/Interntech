@@ -69,24 +69,24 @@ CREATE TABLE location(
 
 
 #------------------------------------------------------------
-# Table: internship_type
+# Table: type
 #------------------------------------------------------------
 
-CREATE TABLE internship_type(
+CREATE TABLE type(
         id   Int  Auto_increment  NOT NULL ,
         name Varchar (50) NOT NULL
-	,CONSTRAINT internship_type_PK PRIMARY KEY (id)
+	,CONSTRAINT type_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: internship_category
+# Table: category
 #------------------------------------------------------------
 
-CREATE TABLE internship_category(
+CREATE TABLE category(
         id   Int  Auto_increment  NOT NULL ,
         name Varchar (50) NOT NULL
-	,CONSTRAINT internship_category_PK PRIMARY KEY (id)
+	,CONSTRAINT category_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
 
@@ -105,13 +105,13 @@ CREATE TABLE wishlist(
 
 
 #------------------------------------------------------------
-# Table: company_field
+# Table: sector
 #------------------------------------------------------------
 
-CREATE TABLE company_field(
+CREATE TABLE sector(
         id   Int  Auto_increment  NOT NULL ,
         name Varchar (50) NOT NULL
-	,CONSTRAINT company_field_PK PRIMARY KEY (id)
+	,CONSTRAINT sector_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
 
@@ -120,12 +120,13 @@ CREATE TABLE company_field(
 #------------------------------------------------------------
 
 CREATE TABLE company(
-        id               Int  Auto_increment  NOT NULL ,
-        name             Varchar (50) ,
-        id_company_field Int NOT NULL
+        id        Int  Auto_increment  NOT NULL ,
+        name      Varchar (50) ,
+        email     Varchar (50) NOT NULL ,
+        id_sector Int NOT NULL
 	,CONSTRAINT company_PK PRIMARY KEY (id)
 
-	,CONSTRAINT company_company_field_FK FOREIGN KEY (id_company_field) REFERENCES company_field(id)
+	,CONSTRAINT company_sector_FK FOREIGN KEY (id_sector) REFERENCES sector(id)
 )ENGINE=InnoDB;
 
 
@@ -134,23 +135,21 @@ CREATE TABLE company(
 #------------------------------------------------------------
 
 CREATE TABLE Internship(
-        id                     Int  Auto_increment  NOT NULL ,
-        name                   Varchar (50) NOT NULL ,
-        duration               Int ,
-        remuneration           Int ,
-        available_places       Int ,
-        skills                 Varchar (50) ,
-        created_time           Date ,
-        id_company             Int NOT NULL ,
-        id_location            TinyINT NOT NULL ,
-        id_internship_category Int ,
-        id_internship_type     Int
+        id               Int  Auto_increment  NOT NULL ,
+        title            Varchar (50) NOT NULL ,
+        duration         Decimal ,
+        remuneration     Decimal ,
+        available_places Int ,
+        skills           Varchar (50) ,
+        created_time     Date ,
+        id_company       Int NOT NULL ,
+        id_category      Int ,
+        id_type          Int
 	,CONSTRAINT Internship_PK PRIMARY KEY (id)
 
 	,CONSTRAINT Internship_company_FK FOREIGN KEY (id_company) REFERENCES company(id)
-	,CONSTRAINT Internship_location0_FK FOREIGN KEY (id_location) REFERENCES location(id)
-	,CONSTRAINT Internship_internship_category1_FK FOREIGN KEY (id_internship_category) REFERENCES internship_category(id)
-	,CONSTRAINT Internship_internship_type2_FK FOREIGN KEY (id_internship_type) REFERENCES internship_type(id)
+	,CONSTRAINT Internship_category0_FK FOREIGN KEY (id_category) REFERENCES category(id)
+	,CONSTRAINT Internship_type1_FK FOREIGN KEY (id_type) REFERENCES type(id)
 )ENGINE=InnoDB;
 
 
@@ -159,8 +158,9 @@ CREATE TABLE Internship(
 #------------------------------------------------------------
 
 CREATE TABLE status(
-        id   Int  Auto_increment  NOT NULL ,
-        name Varchar (50) NOT NULL
+        id          Int  Auto_increment  NOT NULL ,
+        label       Varchar (20) NOT NULL ,
+        description Varchar (100) NOT NULL
 	,CONSTRAINT status_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
@@ -185,15 +185,69 @@ CREATE TABLE application(
 
 
 #------------------------------------------------------------
-# Table: internship_in_wishlist
+# Table: permission
 #------------------------------------------------------------
 
-CREATE TABLE internship_in_wishlist(
+CREATE TABLE permission(
+        id         Int  Auto_increment  NOT NULL ,
+        label      Varchar (50) NOT NULL ,
+        is_allowed Bool NOT NULL
+	,CONSTRAINT permission_PK PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: takes_place
+#------------------------------------------------------------
+
+CREATE TABLE takes_place(
+        id            TinyINT NOT NULL ,
+        id_Internship Int NOT NULL
+	,CONSTRAINT takes_place_PK PRIMARY KEY (id,id_Internship)
+
+	,CONSTRAINT takes_place_location_FK FOREIGN KEY (id) REFERENCES location(id)
+	,CONSTRAINT takes_place_Internship0_FK FOREIGN KEY (id_Internship) REFERENCES Internship(id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: wishlist_internship
+#------------------------------------------------------------
+
+CREATE TABLE wishlist_internship(
         id          Int NOT NULL ,
         id_wishlist Int NOT NULL
-	,CONSTRAINT internship_in_wishlist_PK PRIMARY KEY (id,id_wishlist)
+	,CONSTRAINT wishlist_internship_PK PRIMARY KEY (id,id_wishlist)
 
-	,CONSTRAINT internship_in_wishlist_Internship_FK FOREIGN KEY (id) REFERENCES Internship(id)
-	,CONSTRAINT internship_in_wishlist_wishlist0_FK FOREIGN KEY (id_wishlist) REFERENCES wishlist(id)
+	,CONSTRAINT wishlist_internship_Internship_FK FOREIGN KEY (id) REFERENCES Internship(id)
+	,CONSTRAINT wishlist_internship_wishlist0_FK FOREIGN KEY (id_wishlist) REFERENCES wishlist(id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: role_permission
+#------------------------------------------------------------
+
+CREATE TABLE role_permission(
+        id      Int NOT NULL ,
+        id_role Int NOT NULL
+	,CONSTRAINT role_permission_PK PRIMARY KEY (id,id_role)
+
+	,CONSTRAINT role_permission_permission_FK FOREIGN KEY (id) REFERENCES permission(id)
+	,CONSTRAINT role_permission_role0_FK FOREIGN KEY (id_role) REFERENCES role(id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: company_is_located
+#------------------------------------------------------------
+
+CREATE TABLE company_is_located(
+        id         TinyINT NOT NULL ,
+        id_company Int NOT NULL
+	,CONSTRAINT company_is_located_PK PRIMARY KEY (id,id_company)
+
+	,CONSTRAINT company_is_located_location_FK FOREIGN KEY (id) REFERENCES location(id)
+	,CONSTRAINT company_is_located_company0_FK FOREIGN KEY (id_company) REFERENCES company(id)
 )ENGINE=InnoDB;
 
