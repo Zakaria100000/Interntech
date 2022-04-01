@@ -120,8 +120,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         $sql = "SELECT *,id FROM company";
                                         $result = mysqli_query($link, $sql);
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                            array_pop($row);
-                                            $value = implode(" | ", $row);
+                                            $value = $row['name'];
                                             if ($row["id"] == $id_company){
                                             echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
                                             } else {
@@ -139,8 +138,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         $sql = "SELECT *,id FROM category";
                                         $result = mysqli_query($link, $sql);
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                            array_pop($row);
-                                            $value = implode(" | ", $row);
+                                            $value = $row['name'];
                                             if ($row["id"] == $id_category){
                                             echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
                                             } else {
@@ -158,8 +156,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         $sql = "SELECT *,id FROM type";
                                         $result = mysqli_query($link, $sql);
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                            array_pop($row);
-                                            $value = implode(" | ", $row);
+                                            $value = $row['name'];
                                             if ($row["id"] == $id_type){
                                             echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
                                             } else {

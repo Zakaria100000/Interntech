@@ -26,7 +26,6 @@
 		<a class="dropdown-item" href="sector-index.php">Companies Sectors</a>
 		<a class="dropdown-item" href="status-index.php">Applications Status</a>
 		<a class="dropdown-item" href="takes_place-index.php">Internships Locations</a>
-		<a class="dropdown-item" href="type-index.php">Internships Types</a>
 		<a class="dropdown-item" href="user-index.php">Users</a>
 	<!-- TABLE_BUTTONS -->
         </div>

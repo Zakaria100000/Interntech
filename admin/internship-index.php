@@ -87,14 +87,23 @@
                     }
 
                     // Attempt select query execution
-                    $sql = "SELECT * FROM internship ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
+                    $sql = "SELECT i.id,i.title,i.duration,i.remuneration,i.available_places,i.skills,i.created_time,comp.name as company_name,cat.name as category_name,t.name as type_name
+                    FROM internship i 
+                        INNER JOIN company comp ON i.id_company = comp.id
+                        INNER JOIN category cat ON i.id_category = cat.id 
+                        INNER JOIN type t ON i.id_type = t.id
+                        ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
                     $count_pages = "SELECT * FROM internship";
 
 
                     if(!empty($_GET['search'])) {
                         $search = ($_GET['search']);
-                        $sql = "SELECT * FROM internship
-                            WHERE CONCAT_WS (id,title,duration,remuneration,available_places,skills,created_time,id_company,id_category,id_type)
+                        $sql = "SELECT i.id,i.title,i.duration,i.remuneration,i.available_places,i.skills,i.created_time,comp.name as company_name,cat.name as category_name,t.name as type_name 
+                            FROM internship i 
+                            INNER JOIN company comp ON i.id_company = comp.id
+                            INNER JOIN category cat ON i.id_category = cat.id
+                            INNER JOIN type t ON i.id_type = t.id
+                            WHERE CONCAT_WS (i.id,i.title,i.duration,i.remuneration,i.available_places,i.skills,i.created_time,id_company,id_category,id_type)
                             LIKE '%$search%'
                             ORDER BY $order $sort
                             LIMIT $offset, $no_of_records_per_page";
@@ -135,7 +144,7 @@
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                    echo "<td>" . $row['id'] . "</td>";echo "<td>" . $row['title'] . "</td>";echo "<td>" . $row['duration'] . "</td>";echo "<td>" . $row['remuneration'] . "</td>";echo "<td>" . $row['available_places'] . "</td>";echo "<td>" . $row['skills'] . "</td>";echo "<td>" . $row['created_time'] . "</td>";echo "<td>" . $row['id_company'] . "</td>";echo "<td>" . $row['id_category'] . "</td>";echo "<td>" . $row['id_type'] . "</td>";
+                                    echo "<td>" . $row['id'] . "</td>";echo "<td>" . $row['title'] . "</td>";echo "<td>" . $row['duration'] . "</td>";echo "<td>" . $row['remuneration'] . "</td>";echo "<td>" . $row['available_places'] . "</td>";echo "<td>" . $row['skills'] . "</td>";echo "<td>" . $row['created_time'] . "</td>";echo "<td>" . $row['company_name'] . "</td>";echo "<td>" . $row['category_name'] . "</td>";echo "<td>" . $row['type_name'] . "</td>";
                                         echo "<td>";
                                             echo "<a href='internship-read.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><i class='far fa-eye'></i></a>";
                                             echo "<a href='internship-update.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";
