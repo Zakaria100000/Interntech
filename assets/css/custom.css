@@ -23,6 +23,9 @@
   color: #0a66c2 !important;
 }
 
+.header-area .main-menu ul ul.submenu {
+  border-top: 5px solid #0a66c2;
+}
 /* Scroll up */
 #scrollUp {
   background-color: #0a66c2 !important;
