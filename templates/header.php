@@ -21,6 +21,7 @@
                                     <ul id="navigation">
                                         <li><a href="index.php">Home</a></li>
                                         <li><a href="internships.php">Internships</a></li>
+                                        <li><a href="companies.php">Companies</a></li>
                                         <li><a href="about.php">About</a></li>
                                         <li><a href="contact.php">Contact</a></li>
                                         <?php if(isset($_SESSION["loggedin"])): ?>

@@ -82,7 +82,7 @@
                                 <div class="select-job-items2">
                                     <select name="select">
                                         <option value="">All Category</option>
-                                        <option value="">Category 1</option>
+                                        <option value="">Web Development & Design</option>
                                         <option value="">Category 2</option>
                                         <option value="">Category 3</option>
                                         <option value="">Category 4</option>
@@ -106,10 +106,6 @@
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <label class="container">Freelance
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
                                 </div>
                                 <!-- select-Categories End -->
                             </div>
@@ -122,7 +118,7 @@
                                 <div class="select-job-items2">
                                     <select name="select">
                                         <option value="">Anywhere</option>
-                                        <option value="">Category 1</option>
+                                        <option value="">Adrar</option>
                                         <option value="">Category 2</option>
                                         <option value="">Category 3</option>
                                         <option value="">Category 4</option>
@@ -130,64 +126,10 @@
                                 </div>
                                 <!--  Select job items End-->
                                 <!-- select-Categories start -->
-                                <div class="select-Categories pt-80 pb-50">
-                                    <div class="small-section-tittle2">
-                                        <h4>Experience</h4>
-                                    </div>
-                                    <label class="container">1-2 Years
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">2-3 Years
-                                        <input type="checkbox" checked="checked active">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">3-6 Years
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">6-more..
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
+                                
                                 <!-- select-Categories End -->
                             </div>
-                            <!-- single three -->
-                            <div class="single-listing">
-                                <!-- select-Categories start -->
-                                <div class="select-Categories pb-50">
-                                    <div class="small-section-tittle2">
-                                        <h4>Posted Within</h4>
-                                    </div>
-                                    <label class="container">Any
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">Today
-                                        <input type="checkbox" checked="checked active">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">Last 2 days
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">Last 3 days
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">Last 5 days
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">Last 10 days
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <!-- select-Categories End -->
-                            </div>
-                            <div class="single-listing">
+                            <div class="single-listing" style="margin-top: 90px;">
                                 <!-- Range Slider Start -->
                                 <aside class="left_widgets p_filter_widgets price_rangs_aside sidebar_box_shadow">
                                     <div class="small-section-tittle2">
@@ -224,18 +166,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="count-job mb-35">
-                                            <span>39, 782 Jobs found</span>
-                                            <!-- Select job items start -->
-                                            <div class="select-job-items">
-                                                <span>Sort by</span>
-                                                <select name="select">
-                                                    <option value="">None</option>
-                                                    <option value="">job list</option>
-                                                    <option value="">job list</option>
-                                                    <option value="">job list</option>
-                                                </select>
-                                            </div>
-                                            <!--  Select job items End-->
+                                            <span>15 Jobs found</span>
                                         </div>
                                     </div>
                                 </div>

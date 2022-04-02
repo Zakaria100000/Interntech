@@ -38,7 +38,7 @@
         <div class="slider-area ">
             <!-- Mobile Menu -->
             <div class="slider-active">
-                <div class="single-slider slider-height d-flex align-items-center" data-background="assets/img/hero/h1_hero.jpg">
+                <div class="single-slider slider-height d-flex align-items-center">
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-6 col-lg-9 col-md-10">
@@ -92,7 +92,7 @@
                                 <span class="flaticon-tour"></span>
                             </div>
                             <div class="services-cap">
-                               <h5><a href="job_listing.html">Design & Creative</a></h5>
+                               <h5><a href="job_listing.html">Web Development & Design</a></h5>
                                 <span>(10)</span>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                                 <span class="flaticon-cms"></span>
                             </div>
                             <div class="services-cap">
-                               <h5><a href="job_listing.html">Design & Development</a></h5>
+                               <h5><a href="job_listing.html">Software Development</a></h5>
                                 <span>(45)</span>
                             </div>
                         </div>
@@ -114,7 +114,7 @@
                                 <span class="flaticon-high-tech"></span>
                             </div>
                             <div class="services-cap">
-                               <h5><a href="job_listing.html">Information Technology</a></h5>
+                               <h5><a href="job_listing.html">Network</a></h5>
                                 <span>(35)</span>
                             </div>
                         </div>
@@ -125,7 +125,7 @@
                                 <span class="flaticon-app"></span>
                             </div>
                             <div class="services-cap">
-                               <h5><a href="job_listing.html">Mobile Application</a></h5>
+                               <h5><a href="job_listing.html">Mobile Development</a></h5>
                                 <span>(27)</span>
                             </div>
                         </div>
@@ -141,7 +141,6 @@
                     <div class="col-xl-10">
                         <div class="cv-caption text-center">
                             <p class="pera2"> Make a Difference with Your Online Resume!</p>
-                            <a href="#" class="border-btn2 border-btn4">Upload your cv</a>
                         </div>
                     </div>
                 </div>
@@ -276,60 +275,6 @@
              </div>
         </div>
         <!-- How  Apply Process End-->
-        <!-- Blog Area Start -->
-        <div class="home-blog-area blog-h-padding">
-            <div class="container">
-                <!-- Section Tittle -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-tittle text-center">
-                            <h2>Our recent news</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="home-blog-single mb-30">
-                            <div class="blog-img-cap">
-                                <div class="blog-img">
-                                    <img src="assets/img/blog/home-blog1.jpg" alt="">
-                                    <!-- Blog date -->
-                                    <div class="blog-date text-center">
-                                        <span>24</span>
-                                        <p>Now</p>
-                                    </div>
-                                </div>
-                                <div class="blog-cap">
-                                    <p>|   Properties</p>
-                                    <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                                    <a href="#" class="more-btn">Read more »</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="home-blog-single mb-30">
-                            <div class="blog-img-cap">
-                                <div class="blog-img">
-                                    <img src="assets/img/blog/home-blog2.jpg" alt="">
-                                    <!-- Blog date -->
-                                    <div class="blog-date text-center">
-                                        <span>24</span>
-                                        <p>Now</p>
-                                    </div>
-                                </div>
-                                <div class="blog-cap">
-                                    <p>|   Properties</p>
-                                    <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                                    <a href="#" class="more-btn">Read more »</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Blog Area End -->
 
     </main>
 
