@@ -23,26 +23,32 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="page-header clearfix">
-                        <h2 class="float-left">Internships Details</h2>
-                        <a href="internship-create.php" class="btn btn-success float-right">Add New Record</a>
-                        <a href="internship-index.php" class="btn btn-info float-right mr-2">Reset View</a>
-                        <a href="index.php" class="btn btn-secondary float-right mr-2">Back</a>
-                    </div>
-
-                    <div class="form-row">
-                        <form action="internship-index.php" method="get">
-                        <div class="col">
-                          <input type="text" class="form-control" placeholder="Search this table" name="search">
-                        </div>
-                    </div>
-                        </form>
-                    <br>
 
                     <?php
                     // Include config file
                     require_once "config.php";
                     require_once "helpers.php";
+                    require_once('permissions.php');
+
+                    echo "<div class='page-header clearfix'>";
+                        echo "<h2 class='float-left'>Internships Details</h2>";
+                        if ($_SESSION['SFx9'] == 1) {
+                            echo "<a href='internship-create.php' class='btn btn-success float-right'>Add New Internship</a>";
+                        }
+                        echo "<a href='internship-index.php' class='btn btn-info float-right mr-2'>Reset View</a>";
+                        echo "<a href='index.php' class='btn btn-secondary float-right mr-2'>Back</a>";
+                    echo "</div>";
+                    
+                    echo "<div class='form-row'>";
+                        echo "<form action='internship-index.php' method='get'>";
+                            echo "<div class='col'>";
+                            if ($_SESSION['SFx8'] == 1) {
+                                echo "<input type='text' class='form-control' placeholder='Search this table' name='search'>";
+                            } 
+                            echo "</div>";
+                        echo "</form>";
+                    echo "</div>";
+                    echo "<br>";
 
                     //Get current URL and parameters for correct pagination
                     $protocol = $_SERVER['SERVER_PROTOCOL'];
@@ -147,8 +153,12 @@
                                     echo "<td>" . $row['id'] . "</td>";echo "<td>" . $row['title'] . "</td>";echo "<td>" . $row['duration'] . "</td>";echo "<td>" . $row['remuneration'] . "</td>";echo "<td>" . $row['available_places'] . "</td>";echo "<td>" . $row['skills'] . "</td>";echo "<td>" . $row['created_time'] . "</td>";echo "<td>" . $row['company_name'] . "</td>";echo "<td>" . $row['category_name'] . "</td>";echo "<td>" . $row['type_name'] . "</td>";
                                         echo "<td>";
                                             echo "<a href='internship-read.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><i class='far fa-eye'></i></a>";
-                                            echo "<a href='internship-update.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";
-                                            echo "<a href='internship-delete.php?id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><i class='far fa-trash-alt'></i></a>";
+                                            if ($_SESSION['SFx10'] == 1) {
+                                                echo "<a href='internship-update.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";
+                                            }
+                                            if ($_SESSION['SFx11'] == 1) {
+                                                echo "<a href='internship-delete.php?id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><i class='far fa-trash-alt'></i></a>";
+                                            }
                                         echo "</td>";
                                     echo "</tr>";
                                 }

@@ -23,26 +23,36 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="page-header clearfix">
-                        <h2 class="float-left">Students Details</h2>
-                        <a href="student-create.php" class="btn btn-success float-right">Add New Student</a>
-                        <a href="student-index.php" class="btn btn-info float-right mr-2">Reset View</a>
-                        <a href="index.php" class="btn btn-secondary float-right mr-2">Back</a>
-                    </div>
-
-                    <div class="form-row">
-                        <form action="student-index.php" method="get">
-                        <div class="col">
-                          <input type="text" class="form-control" placeholder="Search this table" name="search">
-                        </div>
-                    </div>
-                        </form>
-                    <br>
 
                     <?php
                     // Include config file
                     require_once "config.php";
                     require_once "helpers.php";
+                    require_once('permissions.php');
+
+                    if ($_SESSION['SFx26'] == 0) {
+                        header("location:index.php");
+                    }
+
+                    echo "<div class='page-header clearfix'>";
+                        echo "<h2 class='float-left'>Students Details</h2>";
+                        if ($_SESSION['SFx23'] == 1) {
+                            echo "<a href='student-create.php' class='btn btn-success float-right'>Add New Student</a>";
+                        }
+                        echo "<a href='student-index.php' class='btn btn-info float-right mr-2'>Reset View</a>";
+                        echo "<a href='index.php' class='btn btn-secondary float-right mr-2'>Back</a>";
+                    echo "</div>";
+                    
+                    echo "<div class='form-row'>";
+                        echo "<form action='student-index.php' method='get'>";
+                            echo "<div class='col'>";
+                            if ($_SESSION['SFx22'] == 1) {
+                                echo "<input type='text' class='form-control' placeholder='Search this table' name='search'>";
+                            } 
+                            echo "</div>";
+                        echo "</form>";
+                    echo "</div>";
+                    echo "<br>"; 
 
                     //Get current URL and parameters for correct pagination
                     $protocol = $_SERVER['SERVER_PROTOCOL'];
@@ -145,8 +155,12 @@
                                     echo "<td>" . $row['firstname'] . "</td>";echo "<td>" . $row['lastname'] . "</td>";echo "<td>" . $row['email'] . "</td>";echo "<td style='-webkit-text-security: disc;'>" . $row['password'] . "</td>";echo "<td>" . $row['role'] . "</td>";echo "<td>" . $row['center'] . "</td>";echo "<td>" . $row['promo'] . "</td>";
                                         echo "<td>";
                                             echo "<a href='student-read.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><i class='far fa-eye'></i></a>";
-                                            echo "<a href='student-update.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";
-                                            echo "<a href='student-delete.php?id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><i class='far fa-trash-alt'></i></a>";
+                                            if ($_SESSION['SFx24'] == 1) {
+                                                echo "<a href='student-update.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";
+                                            }
+                                            if ($_SESSION['SFx25'] == 1) {
+                                                echo "<a href='student-delete.php?id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><i class='far fa-trash-alt'></i></a>";
+                                            }
                                         echo "</td>";
                                     echo "</tr>";
                                 }

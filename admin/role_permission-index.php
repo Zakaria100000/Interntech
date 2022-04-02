@@ -42,7 +42,11 @@
                     // Include config file
                     require_once "config.php";
                     require_once "helpers.php";
-
+                    require_once('permissions.php');
+                    if ($_SESSION['SFx21'] == 0) {
+                        header("location:index.php");
+                    }
+                    
                     //Get current URL and parameters for correct pagination
                     $protocol = $_SERVER['SERVER_PROTOCOL'];
                     $domain     = $_SERVER['HTTP_HOST'];
