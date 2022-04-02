@@ -78,7 +78,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             </div>
 						<div class="form-group">
                                 <label>Motivation Letter</label>
-                                <input type="text" name="lm" maxlength="50"class="form-control" value="<?php echo $lm; ?>">
+                                <textarea name="lm" maxlength="50"class="form-control" value="<?php echo $lm; ?>"></textarea>
                                 <span class="form-text"><?php echo $lm_err; ?></span>
                             </div>
 						<div class="form-group">
