@@ -50,7 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if($stmt->execute([ $firstname,$lastname,$email,$password,$id_role,$id_center,$id_promo  ])) {
                 $stmt = null;
-                header("location: user-index.php");
+                header("location: student-index.php");
             } else{
                 echo "Something went wrong. Please try again later.";
             }
@@ -153,7 +153,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             </div>
 
                         <input type="submit" class="btn btn-primary" value="Submit">
-                        <a href="user-index.php" class="btn btn-secondary">Cancel</a>
+                        <a href="student-index.php" class="btn btn-secondary">Cancel</a>
                     </form>
                 </div>
             </div>

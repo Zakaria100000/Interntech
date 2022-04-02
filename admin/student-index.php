@@ -24,14 +24,14 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h2 class="float-left">Users Details</h2>
-                        <a href="user-create.php" class="btn btn-success float-right">Add New Record</a>
-                        <a href="user-index.php" class="btn btn-info float-right mr-2">Reset View</a>
+                        <h2 class="float-left">Students Details</h2>
+                        <a href="student-create.php" class="btn btn-success float-right">Add New Student</a>
+                        <a href="student-index.php" class="btn btn-info float-right mr-2">Reset View</a>
                         <a href="index.php" class="btn btn-secondary float-right mr-2">Back</a>
                     </div>
 
                     <div class="form-row">
-                        <form action="user-index.php" method="get">
+                        <form action="student-index.php" method="get">
                         <div class="col">
                           <input type="text" class="form-control" placeholder="Search this table" name="search">
                         </div>
@@ -88,12 +88,13 @@
 
                     // Attempt select query execution
                     $sql = "SELECT u.id as id, u.firstname as firstname, u.lastname as lastname, u.email as email, u.password as password, r.name as role, c.name as center, p.name as promo 
-                    FROM user as u
-                    INNER JOIN role as r ON u.id_role = r.id
-                    INNER JOIN center as c ON u.id_center = c.id
-                    INNER JOIN promo as p ON u.id_promo = p.id
-                    ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
-                    $count_pages = "SELECT * FROM user";
+                        FROM user as u
+                        INNER JOIN role as r ON u.id_role = r.id
+                        INNER JOIN center as c ON u.id_center = c.id
+                        INNER JOIN promo as p ON u.id_promo = p.id
+                        WHERE u.id_role = 4 
+                        ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
+                    $count_pages = "SELECT * FROM user WHERE id_role = 4";
 
 
                     if(!empty($_GET['search'])) {
@@ -103,12 +104,12 @@
                             INNER JOIN role as r ON u.id_role = r.id
                             INNER JOIN center as c ON u.id_center = c.id
                             INNER JOIN promo as p ON u.id_promo = p.id
-                            WHERE CONCAT_WS (id,firstname,lastname,email,password,role,center,promo)
-                            LIKE '%$search%'
+                            WHERE CONCAT_WS (u.id,u.firstname,u.lastname,u.email,u.password,u.id_role,c.name,p.name)
+                            LIKE '%$search%' AND u.id_role = 4
                             ORDER BY $order $sort
                             LIMIT $offset, $no_of_records_per_page";
                         $count_pages = "SELECT * FROM user
-                            WHERE CONCAT_WS (id,firstname,lastname,email,password,id_role,id_center,id_promo)
+                            WHERE CONCAT_WS (id,firstname,lastname,email,password,id_role,id_center,id_promo) AND id_role = 4
                             LIKE '%$search%'
                             ORDER BY $order $sort";
                     }
@@ -127,7 +128,6 @@
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th><a href=?search=$search&sort=&order=id&sort=$sort>No</th>";
 										echo "<th><a href=?search=$search&sort=&order=firstname&sort=$sort>Firstname</th>";
 										echo "<th><a href=?search=$search&sort=&order=lastname&sort=$sort>Lastname</th>";
 										echo "<th><a href=?search=$search&sort=&order=email&sort=$sort>Email</th>";
@@ -142,11 +142,11 @@
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                    echo "<td>" . $row['id'] . "</td>";echo "<td>" . $row['firstname'] . "</td>";echo "<td>" . $row['lastname'] . "</td>";echo "<td>" . $row['email'] . "</td>";echo "<td style='-webkit-text-security: disc;'>" . $row['password'] . "</td>";echo "<td>" . $row['role'] . "</td>";echo "<td>" . $row['center'] . "</td>";echo "<td>" . $row['promo'] . "</td>";
+                                    echo "<td>" . $row['firstname'] . "</td>";echo "<td>" . $row['lastname'] . "</td>";echo "<td>" . $row['email'] . "</td>";echo "<td style='-webkit-text-security: disc;'>" . $row['password'] . "</td>";echo "<td>" . $row['role'] . "</td>";echo "<td>" . $row['center'] . "</td>";echo "<td>" . $row['promo'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='user-read.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><i class='far fa-eye'></i></a>";
-                                            echo "<a href='user-update.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";
-                                            echo "<a href='user-delete.php?id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><i class='far fa-trash-alt'></i></a>";
+                                            echo "<a href='student-read.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><i class='far fa-eye'></i></a>";
+                                            echo "<a href='student-update.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";
+                                            echo "<a href='student-delete.php?id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><i class='far fa-trash-alt'></i></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }

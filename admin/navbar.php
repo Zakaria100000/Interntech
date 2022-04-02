@@ -11,14 +11,16 @@
           Select Page
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a href="application-index.php" class="dropdown-item">Applications</a> 
           <a class="dropdown-item" href="company-index.php">Companies</a>
           <a class="dropdown-item" href="company_is_located-index.php">Companies Locations</a>
           <a class="dropdown-item" href="internship-index.php">Internships</a>
-          <a class="dropdown-item" href="role_permission-index.php">Delegation</a>
-          <a class="dropdown-item" href="status-index.php">Applications Status</a>
           <a class="dropdown-item" href="takes_place-index.php">Internships Locations</a>
-          <a class="dropdown-item" href="user-index.php">Users</a>
+          <a class="dropdown-item" href="pilot-index.php">Pilots</a>
+          <a class="dropdown-item" href="delegate-index.php">Delegate</a>
+          <a class="dropdown-item" href="student-index.php">Students</a>
+          <a href="application-index.php" class="dropdown-item">Applications</a> 
+          <a class="dropdown-item" href="status-index.php">Applications Status</a>
+          <a class="dropdown-item" href="role_permission-index.php">Delegation</a>
         <!-- TABLE_BUTTONS -->
         </div>
       </li>

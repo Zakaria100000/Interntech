@@ -95,7 +95,7 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
                             <p class="form-control-static"><?php echo $row["promo"]; ?></p>
                         </div>
 
-                    <p><a href="user-index.php" class="btn btn-primary">Back</a></p>
+                    <p><a href="delegate-index.php" class="btn btn-primary">Back</a></p>
                 </div>
             </div>
         </div>
