@@ -7,7 +7,12 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
     require_once "helpers.php";
 
     // Prepare a select statement
-    $sql = "SELECT * FROM user WHERE id = ?";
+    $sql = "SELECT u.id, u.firstname, u.lastname, u.email, u.password, r.name as role, c.name as center, p.name as promo 
+        FROM user as u
+        INNER JOIN role as r ON u.id_role = r.id
+        INNER JOIN center as c ON u.id_center = c.id
+        INNER JOIN promo as p ON u.id_promo = p.id
+        WHERE u.id = ?";
 
     if($stmt = mysqli_prepare($link, $sql)){
         // Set parameters
@@ -81,13 +86,13 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
                             <p class="form-control-static"><?php echo $row["password"]; ?></p>
                         </div><div class="form-group">
                             <h4>Role</h4>
-                            <p class="form-control-static"><?php echo $row["id_role"]; ?></p>
+                            <p class="form-control-static"><?php echo $row["role"]; ?></p>
                         </div><div class="form-group">
                             <h4>Center</h4>
-                            <p class="form-control-static"><?php echo $row["id_center"]; ?></p>
+                            <p class="form-control-static"><?php echo $row["center"]; ?></p>
                         </div><div class="form-group">
                             <h4>Promo</h4>
-                            <p class="form-control-static"><?php echo $row["id_promo"]; ?></p>
+                            <p class="form-control-static"><?php echo $row["promo"]; ?></p>
                         </div>
 
                     <p><a href="user-index.php" class="btn btn-primary">Back</a></p>

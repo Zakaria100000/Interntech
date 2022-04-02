@@ -7,7 +7,9 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
     require_once "helpers.php";
 
     // Prepare a select statement
-    $sql = "SELECT * FROM company WHERE id = ?";
+    $sql = "SELECT c.id, c.name, c.email, s.name as sector FROM company as c
+        INNER JOIN sector as s ON c.id_sector = s.id 
+        WHERE c.id = ?";
 
     if($stmt = mysqli_prepare($link, $sql)){
         // Set parameters
@@ -75,7 +77,7 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
                             <p class="form-control-static"><?php echo $row["email"]; ?></p>
                         </div><div class="form-group">
                             <h4>Sector</h4>
-                            <p class="form-control-static"><?php echo $row["id_sector"]; ?></p>
+                            <p class="form-control-static"><?php echo $row["sector"]; ?></p>
                         </div>
 
                     <p><a href="company-index.php" class="btn btn-primary">Back</a></p>

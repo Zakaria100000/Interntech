@@ -7,7 +7,12 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
     require_once "helpers.php";
 
     // Prepare a select statement
-    $sql = "SELECT * FROM application WHERE id = ?";
+    $sql = "SELECT a.id as id, a.cv as cv, a.lm as lm, u.email as email, i.id as id_internship, i.title as internship, s.label as status
+        FROM application as a
+        INNER JOIN user as u ON a.id_user = u.id
+        INNER JOIN internship as i ON a.id_internship = i.id
+        INNER JOIN status as s ON a.id_status = s.id
+        WHERE a.id = ?";
 
     if($stmt = mysqli_prepare($link, $sql)){
         // Set parameters
@@ -75,13 +80,13 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
                             <p class="form-control-static"><?php echo $row["lm"]; ?></p>
                         </div><div class="form-group">
                             <h4>User</h4>
-                            <p class="form-control-static"><?php echo $row["id_user"]; ?></p>
+                            <p class="form-control-static"><?php echo $row["email"]; ?></p>
                         </div><div class="form-group">
                             <h4>Internship</h4>
-                            <p class="form-control-static"><?php echo $row["id_Internship"]; ?></p>
+                            <p class="form-control-static"><?php echo $row["internship"]; ?></p>
                         </div><div class="form-group">
                             <h4>Status</h4>
-                            <p class="form-control-static"><?php echo $row["id_status"]; ?></p>
+                            <p class="form-control-static"><?php echo $row["status"]; ?></p>
                         </div>
 
                     <p><a href="application-index.php" class="btn btn-primary">Back</a></p>

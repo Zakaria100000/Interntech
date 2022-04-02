@@ -76,7 +76,7 @@
                         }
 
                     //Column sort order
-                    $sortBy = array('asc', 'desc'); $sort = 'desc';
+                    $sortBy = array('asc', 'desc'); $sort = 'asc';
                     if (isset($_GET['sort']) && in_array($_GET['sort'], $sortBy)) {
                           if($_GET['sort']=='asc') {
                             $sort='desc';
@@ -87,14 +87,23 @@
                     }
 
                     // Attempt select query execution
-                    $sql = "SELECT * FROM user ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
+                    $sql = "SELECT u.id as id, u.firstname as firstname, u.lastname as lastname, u.email as email, u.password as password, r.name as role, c.name as center, p.name as promo 
+                    FROM user as u
+                    INNER JOIN role as r ON u.id_role = r.id
+                    INNER JOIN center as c ON u.id_center = c.id
+                    INNER JOIN promo as p ON u.id_promo = p.id
+                    ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
                     $count_pages = "SELECT * FROM user";
 
 
                     if(!empty($_GET['search'])) {
                         $search = ($_GET['search']);
-                        $sql = "SELECT * FROM user
-                            WHERE CONCAT_WS (id,firstname,lastname,email,password,id_role,id_center,id_promo)
+                        $sql = "SELECT u.id as id, u.firstname as firstname, u.lastname as lastname, u.email as email, u.password as password, r.name as role, c.name as center, p.name as promo 
+                            FROM user as u
+                            INNER JOIN role as r ON u.id_role = r.id
+                            INNER JOIN center as c ON u.id_center = c.id
+                            INNER JOIN promo as p ON u.id_promo = p.id
+                            WHERE CONCAT_WS (id,firstname,lastname,email,password,role,center,promo)
                             LIKE '%$search%'
                             ORDER BY $order $sort
                             LIMIT $offset, $no_of_records_per_page";
@@ -133,7 +142,7 @@
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                    echo "<td>" . $row['id'] . "</td>";echo "<td>" . $row['firstname'] . "</td>";echo "<td>" . $row['lastname'] . "</td>";echo "<td>" . $row['email'] . "</td>";echo "<td>" . $row['password'] . "</td>";echo "<td>" . $row['id_role'] . "</td>";echo "<td>" . $row['id_center'] . "</td>";echo "<td>" . $row['id_promo'] . "</td>";
+                                    echo "<td>" . $row['id'] . "</td>";echo "<td>" . $row['firstname'] . "</td>";echo "<td>" . $row['lastname'] . "</td>";echo "<td>" . $row['email'] . "</td>";echo "<td style='-webkit-text-security: disc;'>" . $row['password'] . "</td>";echo "<td>" . $row['role'] . "</td>";echo "<td>" . $row['center'] . "</td>";echo "<td>" . $row['promo'] . "</td>";
                                         echo "<td>";
                                             echo "<a href='user-read.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><i class='far fa-eye'></i></a>";
                                             echo "<a href='user-update.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";

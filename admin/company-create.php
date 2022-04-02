@@ -82,8 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         $sql = "SELECT *,id FROM sector";
                                         $result = mysqli_query($link, $sql);
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                            array_pop($row);
-                                            $value = implode(" | ", $row);
+                                            $value = $row['name'];
                                             if ($row["id"] == $id_sector){
                                             echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
                                             } else {

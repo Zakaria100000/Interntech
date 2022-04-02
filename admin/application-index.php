@@ -87,14 +87,23 @@
                     }
 
                     // Attempt select query execution
-                    $sql = "SELECT * FROM application ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
+                    $sql = "SELECT a.id as id, a.cv as cv, a.lm as lm, u.email as email, i.id as id_internship, i.title as internship, s.label as status
+                        FROM application as a
+                        INNER JOIN user as u ON a.id_user = u.id
+                        INNER JOIN internship as i ON a.id_internship = i.id
+                        INNER JOIN status as s ON a.id_status = s.id
+                        ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
                     $count_pages = "SELECT * FROM application";
 
 
                     if(!empty($_GET['search'])) {
                         $search = ($_GET['search']);
-                        $sql = "SELECT * FROM application
-                            WHERE CONCAT_WS (id,cv,lm,id_user,id_Internship,id_status)
+                        $sql = "SELECT a.id as id, a.cv as cv, a.lm as lm, u.email as email, i.id as id_internship, i.title as internship, s.label as status
+                            FROM application as a
+                            INNER JOIN user as u ON a.id_user = u.id
+                            INNER JOIN internship as i ON a.id_internship = i.id
+                            INNER JOIN status as s ON a.id_status = s.id
+                            WHERE CONCAT_WS (a.id,a.cv,a.lm,u.email,i.id,i.title,s.label)
                             LIKE '%$search%'
                             ORDER BY $order $sort
                             LIMIT $offset, $no_of_records_per_page";
@@ -131,7 +140,7 @@
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                    echo "<td>" . $row['id'] . "</td>";echo "<td>" . $row['cv'] . "</td>";echo "<td>" . $row['lm'] . "</td>";echo "<td>" . $row['id_user'] . "</td>";echo "<td>" . $row['id_Internship'] . "</td>";echo "<td>" . $row['id_status'] . "</td>";
+                                    echo "<td>" . $row['id'] . "</td>";echo "<td>" . $row['cv'] . "</td>";echo "<td>" . $row['lm'] . "</td>";echo "<td>" . $row['email'] . "</td>";echo "<td>" . $row['id_internship'] . " | " . $row['internship'] . "</td>";echo "<td>" . $row['status'] . "</td>";
                                         echo "<td>";
                                             echo "<a href='application-read.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><i class='far fa-eye'></i></a>";
                                             echo "<a href='application-update.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";

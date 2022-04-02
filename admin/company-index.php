@@ -76,7 +76,7 @@
                         }
 
                     //Column sort order
-                    $sortBy = array('asc', 'desc'); $sort = 'desc';
+                    $sortBy = array('asc', 'desc'); $sort = 'asc';
                     if (isset($_GET['sort']) && in_array($_GET['sort'], $sortBy)) {
                           if($_GET['sort']=='asc') {
                             $sort='desc';
@@ -87,14 +87,17 @@
                     }
 
                     // Attempt select query execution
-                    $sql = "SELECT * FROM company ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
+                    $sql = "SELECT c.id, c.name, c.email, s.name as sector FROM company as c
+                        INNER JOIN sector as s ON c.id_sector = s.id
+                        ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
                     $count_pages = "SELECT * FROM company";
 
 
                     if(!empty($_GET['search'])) {
                         $search = ($_GET['search']);
-                        $sql = "SELECT * FROM company
-                            WHERE CONCAT_WS (id,name,email,id_sector)
+                        $sql = "SELECT c.id, c.name, c.email, s.name as sector FROM company as c
+                            INNER JOIN sector as s ON c.id_sector = s.id
+                            WHERE CONCAT_WS (c.id,c.name,c.email,c.id_sector)
                             LIKE '%$search%'
                             ORDER BY $order $sort
                             LIMIT $offset, $no_of_records_per_page";
@@ -129,7 +132,7 @@
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                    echo "<td>" . $row['id'] . "</td>";echo "<td>" . $row['name'] . "</td>";echo "<td>" . $row['email'] . "</td>";echo "<td>" . $row['id_sector'] . "</td>";
+                                    echo "<td>" . $row['id'] . "</td>";echo "<td>" . $row['name'] . "</td>";echo "<td>" . $row['email'] . "</td>";echo "<td>" . $row['sector'] . "</td>";
                                         echo "<td>";
                                             echo "<a href='company-read.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><i class='far fa-eye'></i></a>";
                                             echo "<a href='company-update.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";

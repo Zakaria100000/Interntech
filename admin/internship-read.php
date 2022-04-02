@@ -7,7 +7,12 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
     require_once "helpers.php";
 
     // Prepare a select statement
-    $sql = "SELECT * FROM internship WHERE id = ?";
+    $sql = "SELECT i.id,i.title,i.duration,i.remuneration,i.available_places,i.skills,i.created_time,comp.name as company_name,cat.name as category_name,t.name as type_name
+        FROM internship i 
+        INNER JOIN company comp ON i.id_company = comp.id
+        INNER JOIN category cat ON i.id_category = cat.id 
+        INNER JOIN type t ON i.id_type = t.id
+        WHERE i.id = ?";
 
     if($stmt = mysqli_prepare($link, $sql)){
         // Set parameters
@@ -87,13 +92,13 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
                             <p class="form-control-static"><?php echo $row["created_time"]; ?></p>
                         </div><div class="form-group">
                             <h4>Company</h4>
-                            <p class="form-control-static"><?php echo $row["id_company"]; ?></p>
+                            <p class="form-control-static"><?php echo $row["company_name"]; ?></p>
                         </div><div class="form-group">
                             <h4>Category</h4>
-                            <p class="form-control-static"><?php echo $row["id_category"]; ?></p>
+                            <p class="form-control-static"><?php echo $row["category_name"]; ?></p>
                         </div><div class="form-group">
                             <h4>Type</h4>
-                            <p class="form-control-static"><?php echo $row["id_type"]; ?></p>
+                            <p class="form-control-static"><?php echo $row["type_name"]; ?></p>
                         </div>
 
                     <p><a href="internship-index.php" class="btn btn-primary">Back</a></p>

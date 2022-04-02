@@ -26,7 +26,7 @@
                                         <?php if(isset($_SESSION["loggedin"])): ?>
                                             <?php echo "<li><a href='#'>{$_SESSION['email']}</a>
                                                             <ul class='submenu'>
-                                                                <li><a href='admin.php'>Dashboard</a></li>
+                                                                <li><a href='admin'>Dashboard</a></li>
                                                                 <li><a href='logout.php'>Logout</a></li>
                                                             </ul>
                                                         </li>"

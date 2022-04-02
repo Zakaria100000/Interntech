@@ -24,8 +24,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h2 class="float-left">Roles and Permissions Details</h2>
-                        <a href="role_permission-create.php" class="btn btn-success float-right">Add New Record</a>
+                        <h2 class="float-left">Delegation</h2>
                         <a href="role_permission-index.php" class="btn btn-info float-right mr-2">Reset View</a>
                         <a href="index.php" class="btn btn-secondary float-right mr-2">Back</a>
                     </div>
@@ -76,7 +75,7 @@
                         }
 
                     //Column sort order
-                    $sortBy = array('asc', 'desc'); $sort = 'desc';
+                    $sortBy = array('asc', 'desc'); $sort = 'asc';
                     if (isset($_GET['sort']) && in_array($_GET['sort'], $sortBy)) {
                           if($_GET['sort']=='asc') {
                             $sort='desc';
@@ -87,13 +86,25 @@
                     }
 
                     // Attempt select query execution
-                    $sql = "SELECT * FROM role_permission ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
-                    $count_pages = "SELECT * FROM role_permission";
+                    $sql = "SELECT rp.id_role as id_role, rp.id_permission as id_permission, p.label as permission, rp.is_allowed as is_allowed
+                        FROM role_permission as rp
+                        INNER JOIN permission as p ON rp.id_permission = p.id
+                        WHERE id_role = 3 
+                        AND id_permission IN(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,22,23,24,25,26,32,33)
+                        ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
+                    $count_pages = "SELECT * 
+                        FROM role_permission
+                        WHERE id_role = 3 
+                        AND id_permission IN(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,22,23,24,25,26,32,33)";
 
 
                     if(!empty($_GET['search'])) {
                         $search = ($_GET['search']);
-                        $sql = "SELECT * FROM role_permission
+                        $sql = "SELECT rp.id_role as role, p.label as permission, rp.is_allowed as is_allowed
+                            FROM role_permission as rp
+                            INNER JOIN permission as p ON rp.id_permission = p.id
+                            WHERE id_role = 3 
+                            AND id_permission IN(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,22,23,24,25,26,32,33)
                             WHERE CONCAT_WS (id_role,id_permission,is_allowed)
                             LIKE '%$search%'
                             ORDER BY $order $sort
@@ -118,7 +129,6 @@
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th><a href=?search=$search&sort=&order=id_role&sort=$sort>Role</th>";
 										echo "<th><a href=?search=$search&sort=&order=id_permission&sort=$sort>Permission</th>";
 										echo "<th><a href=?search=$search&sort=&order=is_allowed&sort=$sort>Is Allowed ?</th>";
 										
@@ -128,7 +138,7 @@
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                    echo "<td>" . $row['id_role'] . "</td>";echo "<td>" . $row['id_permission'] . "</td>";echo "<td>" . $row['is_allowed'] . "</td>";
+                                    echo "<td>" . $row['permission'] . "</td>";echo "<td>" . $row['is_allowed'] . "</td>";
                                         echo "<td>";
                                             echo "<a href='role_permission-read.php?id_permission=". $row['id_permission'] ."' title='View Record' data-toggle='tooltip'><i class='far fa-eye'></i></a>";
                                             echo "<a href='role_permission-update.php?id_permission=". $row['id_permission'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";

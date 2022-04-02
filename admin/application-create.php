@@ -88,8 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         $sql = "SELECT *,id FROM user";
                                         $result = mysqli_query($link, $sql);
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                            array_pop($row);
-                                            $value = implode(" | ", $row);
+                                            $value = $row['email'];
                                             if ($row["id"] == $id_user){
                                             echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
                                             } else {
@@ -107,8 +106,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         $sql = "SELECT *,id FROM internship";
                                         $result = mysqli_query($link, $sql);
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                            array_pop($row);
-                                            $value = implode(" | ", $row);
+                                            $value = implode(" | ", [$row['id'], $row['title']]);
                                             if ($row["id"] == $id_Internship){
                                             echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
                                             } else {
@@ -126,8 +124,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         $sql = "SELECT *,id FROM status";
                                         $result = mysqli_query($link, $sql);
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                            array_pop($row);
-                                            $value = implode(" | ", $row);
+                                            $value = implode(" | ", [$row['label'], $row['description']]);
                                             if ($row["id"] == $id_status){
                                             echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
                                             } else {
