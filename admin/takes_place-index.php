@@ -87,19 +87,29 @@
                     }
 
                     // Attempt select query execution
-                    $sql = "SELECT * FROM takes_place ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
+                    $sql = "SELECT tp.id_internship as id_internship, tp.id_location as id_location, i.title as internship, l.city as city
+                        FROM takes_place as tp
+                        JOIN internship as i ON tp.id_internship = i.id
+                        JOIN location as l ON tp.id_location = l.id
+                        ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
                     $count_pages = "SELECT * FROM takes_place";
 
 
                     if(!empty($_GET['search'])) {
                         $search = ($_GET['search']);
-                        $sql = "SELECT * FROM takes_place
-                            WHERE CONCAT_WS (id_Internship,id_location)
+                        $sql = "SELECT tp.id_internship as id_internship, tp.id_location as id_location, i.title as internship, l.city as city
+                            FROM takes_place as tp
+                            JOIN internship as i ON tp.id_internship = i.id
+                            JOIN location as l ON tp.id_location = l.id
+                            WHERE CONCAT_WS (tp.id_internship,tp.id_location,i.title,l.city)
                             LIKE '%$search%'
                             ORDER BY $order $sort
                             LIMIT $offset, $no_of_records_per_page";
-                        $count_pages = "SELECT * FROM takes_place
-                            WHERE CONCAT_WS (id_Internship,id_location)
+                        $count_pages = "SELECT tp.id_internship as id_internship, tp.id_location as id_location, i.title as internship, l.city as city
+                            FROM takes_place as tp
+                            JOIN internship as i ON tp.id_internship = i.id
+                            JOIN location as l ON tp.id_location = l.id
+                            WHERE CONCAT_WS (tp.id_internship,tp.id_location,i.title,l.city)
                             LIKE '%$search%'
                             ORDER BY $order $sort";
                     }
@@ -127,9 +137,8 @@
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                    echo "<td>" . $row['id_Internship'] . "</td>";echo "<td>" . $row['id_location'] . "</td>";
+                                    echo "<td>" . implode(" | ", [$row['id_internship'], $row['internship']]) . "</td>";echo "<td>" . $row['city'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='takes_place-read.php?id_location=". $row['id_location'] ."' title='View Record' data-toggle='tooltip'><i class='far fa-eye'></i></a>";
                                             echo "<a href='takes_place-update.php?id_location=". $row['id_location'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";
                                             echo "<a href='takes_place-delete.php?id_location=". $row['id_location'] ."' title='Delete Record' data-toggle='tooltip'><i class='far fa-trash-alt'></i></a>";
                                         echo "</td>";

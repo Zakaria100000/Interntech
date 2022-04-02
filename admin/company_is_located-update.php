@@ -127,8 +127,7 @@ if(isset($_POST["id_location"]) && !empty($_POST["id_location"])){
                                         $sql = "SELECT *,id FROM company";
                                         $result = mysqli_query($link, $sql);
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                            array_pop($row);
-                                            $value = implode(" | ", $row);
+                                            $value = implode(" | ", [$row['id'], $row['name']]);
                                             if ($row["id"] == $id_company){
                                             echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
                                             } else {
@@ -146,8 +145,7 @@ if(isset($_POST["id_location"]) && !empty($_POST["id_location"])){
                                         $sql = "SELECT *,id FROM location";
                                         $result = mysqli_query($link, $sql);
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                            array_pop($row);
-                                            $value = implode(" | ", $row);
+                                            $value = implode(" | ", [$row['id'], $row['city']]);
                                             if ($row["id"] == $id_location){
                                             echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
                                             } else {

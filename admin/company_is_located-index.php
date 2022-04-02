@@ -87,19 +87,29 @@
                     }
 
                     // Attempt select query execution
-                    $sql = "SELECT * FROM company_is_located ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
+                    $sql = "SELECT cl.id_company as id_company, cl.id_location as id_location, c.name as company, l.city as city
+                        FROM company_is_located as cl
+                        JOIN company as c ON cl.id_company = c.id
+                        JOIN location as l ON cl.id_location = l.id 
+                        ORDER BY $order $sort LIMIT $offset, $no_of_records_per_page";
                     $count_pages = "SELECT * FROM company_is_located";
 
 
                     if(!empty($_GET['search'])) {
                         $search = ($_GET['search']);
-                        $sql = "SELECT * FROM company_is_located
-                            WHERE CONCAT_WS (id_company,id_location)
+                        $sql = "SELECT cl.id_company as id_company, cl.id_location as id_location, c.name as company, l.city as city
+                            FROM company_is_located as cl
+                            JOIN company as c ON cl.id_company = c.id
+                            JOIN location as l ON cl.id_location = l.id
+                            WHERE CONCAT_WS (cl.id_company,cl.id_location,c.name,l.city)
                             LIKE '%$search%'
                             ORDER BY $order $sort
                             LIMIT $offset, $no_of_records_per_page";
-                        $count_pages = "SELECT * FROM company_is_located
-                            WHERE CONCAT_WS (id_company,id_location)
+                        $count_pages = "SELECT cl.id_company as id_company, cl.id_location as id_location, c.name as company, l.city as city
+                            FROM company_is_located as cl
+                            JOIN company as c ON cl.id_company = c.id
+                            JOIN location as l ON tp.id_location = l.id
+                            WHERE CONCAT_WS (cl.id_company,cl.id_location,c.name,l.city)
                             LIKE '%$search%'
                             ORDER BY $order $sort";
                     }
@@ -127,9 +137,8 @@
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                    echo "<td>" . $row['id_company'] . "</td>";echo "<td>" . $row['id_location'] . "</td>";
+                                    echo "<td>" . $row['company'] . "</td>";echo "<td>" . $row['city'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='company_is_located-read.php?id_location=". $row['id_location'] ."' title='View Record' data-toggle='tooltip'><i class='far fa-eye'></i></a>";
                                             echo "<a href='company_is_located-update.php?id_location=". $row['id_location'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";
                                             echo "<a href='company_is_located-delete.php?id_location=". $row['id_location'] ."' title='Delete Record' data-toggle='tooltip'><i class='far fa-trash-alt'></i></a>";
                                         echo "</td>";
