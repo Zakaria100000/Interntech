@@ -1,0 +1,22 @@
+{
+    "name":"Interntech App",
+    "short_name":"Interntech",
+    "start_url":"index.php",
+    "display":"standalone",
+    "background_color":"#5900b3",
+    "theme_color":"black",
+    "scope": ".",
+    "description":"",
+    "icons":[
+    {
+        "src":"logo.png",                     
+        "sizes":"200x200",
+        "type":"image/png"
+        },
+        {
+        "src":"logo2.png",
+        "sizes":"200x200",
+        "type":"image/png"
+        }
+      ]
+    }

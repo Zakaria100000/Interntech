@@ -59,26 +59,18 @@
                         <div class="right-caption">
                             <!-- Section Tittle -->
                             <div class="section-tittle section-tittle2">
-                                <span>What we are doing</span>
-                                <h2>24k Talented people are getting Jobs</h2>
+                                <span>What are we doing</span>
+                                <h2>10k students are applying for their internships</h2>
                             </div>
                             <div class="support-caption">
-                                <p class="pera-top">Mollit anim laborum duis au dolor in voluptate velit ess cillum
-                                    dolore eu lore dsu quality mollit anim laborumuis au dolor in voluptate velit
-                                    cillum.</p>
-                                <p>Mollit anim laborum.Duis aute irufg dhjkolohr in re voluptate velit esscillumlore eu
-                                    quife nrulla parihatur. Excghcepteur signjnt occa cupidatat non inulpadeserunt
-                                    mollit aboru. temnthp incididbnt ut labore mollit anim laborum suis aute.</p>
-                                <a href="about.html" class="btn post-btn">Post a job</a>
+                                <p class="pera-top">We are a technology company on a mission to equip students with relevant skills & practical exposure to help them get the best possible start to their careers. Imagine a world full of freedom and possibilities. A world where you can discover your passion and turn it into your career. A world where you graduate fully assured, confident, and prepared to stake a claim on your place in the world.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6">
                         <div class="support-location-img">
-                            <img src="assets/img/service/support-img.jpg" alt="">
-                            <div class="support-img-cap text-center">
-                                <p>Since</p>
-                                <span>1994</span>
+                        <img src="assets/img/service/support-img.jpg" alt="">
+                          
                             </div>
                         </div>
                     </div>
